@@ -7,20 +7,15 @@ export default function Main() {
     return <li>{ingredient}</li>;
   });
 
-  function onSubmitHandler(e) {
-    e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
+  function addIngredient(formData) {
     const newIngredient = formData.get("ingredient");
 
     setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
-
-    console.log(ingredients);
   }
 
   return (
     <main>
-      <form onSubmit={onSubmitHandler} className="add-ingredient-form">
+      <form action={addIngredient} className="add-ingredient-form">
         <input
           type="text"
           placeholder="e.g oregeno"
@@ -29,7 +24,23 @@ export default function Main() {
         />
         <button>Add ingredient</button>
       </form>
-      <ul>{ingredientEl}</ul>
+      {ingredients.length ? (
+        <section>
+          <h2>Ingredients on hand:</h2>
+          <ul className="ingredients-list" aria-live="polite">
+            {ingredientEl}
+          </ul>
+          {ingredients.length >= 4 ? (
+            <div className="get-recipe-container">
+              <div>
+                <h2>Ready for a recipe?</h2>
+                <p>Generate a recipe from your list of ingredients</p>
+              </div>
+              <button className="get-a-recipe-btn">Get a recipe</button>
+            </div>
+          ) : null}
+        </section>
+      ) : null}
     </main>
   );
 }

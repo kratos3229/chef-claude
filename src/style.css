@@ -66,3 +66,28 @@ main {
   width: 160px;
   font-size: 0.875rem;
 }
+
+.get-recipe-container {
+  background-color: #dadada;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  margin-top: 3rem;
+  border-radius: 6px;
+}
+
+.get-recipe-container p {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.get-a-recipe-btn {
+  background-color: rgb(168, 103, 49);
+  color: aliceblue;
+  outline: none;
+  border: none;
+  border-radius: 7px;
+  padding: 1rem;
+  font-size: 1rem;
+}
